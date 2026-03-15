@@ -24,8 +24,8 @@ const beforeAfterCases = [
   { num: "01", label: "회춘윤곽 관리 후 주름개선 임상", img: "/ba-01.jpg", tagPos: "side" },
   { num: "02", label: "회춘윤곽 관리 후 주름개선 임상", img: "/ba-02.jpg", tagPos: "diagonal" },
   { num: "03", label: "회춘윤곽 관리 후 주름개선 임상", img: "/ba-03.jpg", tagPos: "side" },
-  { num: "04", label: "중안부 볼륨 임상", img: "/ba-04.jpg", tagPos: "diagonal" },
-  { num: "05", label: "중안부 볼륨 임상", img: "/ba-05.jpg", tagPos: "diagonal" },
+  { num: "04", label: "중안부 볼륨 임상", img: "/ba-04.jpg", tagPos: "diagonal", flipped: true },
+  { num: "05", label: "중안부 볼륨 임상", img: "/ba-05.jpg", tagPos: "diagonal", flipped: true },
   { num: "06", label: "등 관리 임상", img: "/ba-06.jpg", tagPos: "side" },
   { num: "07", label: "여드름 케어 임상", img: "/ba-07.jpg", tagPos: "diagonal" },
   { num: "08", label: "여드름 케어 임상", img: "/ba-08.jpg", tagPos: "diagonal" },
@@ -138,7 +138,7 @@ export default function Home() {
         <div className="container header-inner">
           <a href="#" className="logo">Bami Beauty</a>
           <div className="header-cta">
-            <a href="tel:0507-1366-8976" className="btn-header-phone">
+            <a href="tel:010-2703-8976" className="btn-header-phone">
               <PhoneIcon size={14} strokeWidth={2.5} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
               전화예약
             </a>
@@ -380,7 +380,7 @@ export default function Home() {
           )}
 
           <div className="services-cta fade-up">
-            <a href="tel:0507-1366-8976" className="btn btn-outline">
+            <a href="tel:010-2703-8976" className="btn btn-outline">
               <PhoneIcon /> 내 피부 고민에 맞는 관리 상담받기
             </a>
           </div>
@@ -404,10 +404,10 @@ export default function Home() {
                 </div>
                 <div className="ba-img-wrap">
                   <Image src={item.img} alt={`${item.label} - Before & After`} fill style={{ objectFit: "cover" }} />
-                  <span className="ba-tag ba-tag-b" style={{ left: 10, top: 10 }}>
+                  <span className="ba-tag ba-tag-b" style={item.flipped ? { left: 10, bottom: 10 } : { left: 10, top: 10 }}>
                     BEFORE
                   </span>
-                  <span className="ba-tag ba-tag-a" style={item.tagPos === "side" ? { right: 10, top: 10 } : { right: 10, bottom: 10 }}>
+                  <span className="ba-tag ba-tag-a" style={item.flipped ? { right: 10, top: 10 } : item.tagPos === "side" ? { right: 10, top: 10 } : { right: 10, bottom: 10 }}>
                     AFTER
                   </span>
                 </div>
@@ -518,7 +518,7 @@ export default function Home() {
                 <div className="location-item-icon" aria-hidden="true">📞</div>
                 <div className="location-item-text">
                   <h4>전화번호</h4>
-                  <p><a href="tel:0507-1366-8976" style={{ color: "var(--rose-gold-dark)", fontWeight: 600 }}>0507-1366-8976</a></p>
+                  <p><a href="tel:010-2703-8976" style={{ color: "var(--rose-gold-dark)", fontWeight: 600 }}>010-2703-8976</a></p>
                 </div>
               </div>
               <div className="location-item">
@@ -550,7 +550,7 @@ export default function Home() {
             <h2>실망은 끝내고, 변화는 시작되는<br />&ldquo;예뻐질 수 있다는 확신&rdquo;</h2>
             <p>당신은 원래 아름답습니다.</p>
             <div className="final-cta-buttons">
-              <a href="tel:0507-1366-8976" className="btn btn-primary"><PhoneIcon /> 바미뷰티 상담하기</a>
+              <a href="tel:010-2703-8976" className="btn btn-primary"><PhoneIcon /> 바미뷰티 상담하기</a>
             </div>
           </div>
         </div>
@@ -561,7 +561,7 @@ export default function Home() {
         <div className="container">
           <p>
             <span className="footer-brand">바미뷰티</span><br />
-            대전 서구 문정로 77 로데오타운 3층 348호 &nbsp;|&nbsp; 전화 0507-1366-8976<br />
+            대전 서구 문정로 77 로데오타운 3층 348호 &nbsp;|&nbsp; 전화 010-2703-8976<br />
             &copy; 2025 바미뷰티. All rights reserved.
           </p>
         </div>
@@ -586,7 +586,7 @@ export default function Home() {
       {/* ===== MOBILE STICKY CTA ===== */}
       <div className="mobile-cta" id="mobileCta">
         <div className="mobile-cta-inner">
-          <a href="tel:0507-1366-8976" className="btn btn-primary">
+          <a href="tel:010-2703-8976" className="btn btn-primary">
             <PhoneIcon size={16} strokeWidth={2.5} /> 전화 예약
           </a>
           <a href="https://pf.kakao.com/_vTsuG" target="_blank" rel="noopener noreferrer" className="btn btn-kakao">
