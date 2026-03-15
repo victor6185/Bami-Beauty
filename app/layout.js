@@ -16,7 +16,15 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const siteUrl = "https://example.com"; // ← 배포 후 실제 도메인으로 교체
+const siteUrl = "https://bami-beauty.vercel.app";
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#F5EDE3",
+};
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
