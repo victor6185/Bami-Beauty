@@ -33,6 +33,13 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* 모바일 터치 최적화 */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 body {
@@ -82,6 +89,10 @@ ul, ol { list-style: none; }
   line-height: 1.75;
   max-width: 560px;
 }
+
+/* 모바일에서만 줄바꿈 */
+.mobile-br { display: none; }
+@media (max-width: 768px) { .mobile-br { display: block; } }
 
 .text-center { text-align: center; }
 .mx-auto { margin-left: auto; margin-right: auto; }
@@ -1256,61 +1267,236 @@ ul, ol { list-style: none; }
   .container { padding: 0 20px; }
   .header-cta { display: none; }
 
-  .hero { min-height: auto; padding: 100px 0 80px; }
-  .hero-inner { flex-direction: column; gap: 40px; text-align: center; }
-  .hero h1 { font-size: 2rem; }
-  .hero-sub { margin: 0 auto 32px; }
+  /* ── Hero ── */
+  .hero { min-height: auto; padding: 100px 0 60px; }
+  .hero-inner { flex-direction: column; gap: 32px; text-align: center; }
+  .hero h1 { font-size: 1.85rem; line-height: 1.35; }
+  .hero-sub { margin: 0 auto 28px; }
+  .hero-pain { font-size: 0.9rem; line-height: 1.8; margin-bottom: 16px; }
+  .hero-empathy { font-size: 1rem; margin-bottom: 16px; }
+  .hero-conclusion { font-size: 1.1rem; }
   .hero-cta { justify-content: center; }
-  .hero-visual { flex: none; width: 100%; max-width: 340px; margin: 0 auto; }
+  .hero-visual { flex: none; width: 100%; max-width: 300px; margin: 0 auto; }
+  .hero-visual-card { padding: 20px; }
   .hero-float-card.card-1 { right: -10px; top: -5px; }
-  .reasons { padding: 60px 0; }
+  .hero-float-card .float-text { font-size: 0.72rem; }
+  .hero-float-card .float-icon { width: 30px; height: 30px; font-size: 0.95rem; }
+  .hero-badge { font-size: 0.75rem; padding: 5px 14px; margin-bottom: 18px; }
 
-  .story { min-height: auto; padding: 72px 0; }
+  /* ── Reasons ── */
+  .reasons { padding: 56px 0; }
+  .reasons-title { font-size: 1.35rem; gap: 8px; }
+  .reasons-emoji { font-size: 2.4rem; }
+  .reason-card { padding: 18px 20px; gap: 12px; }
+  .reason-text { font-size: 0.88rem; }
 
-  .difference { padding: 72px 0; }
-  .difference-grid { grid-template-columns: 1fr; }
+  /* ── Story ── */
+  .story { min-height: auto; padding: 56px 0; }
+  .story-title { font-size: 1.35rem; margin-bottom: 28px; }
+  .story-body { padding: 28px 24px; }
+  .story-body p { font-size: 1rem; line-height: 1.75; margin-bottom: 18px; }
+  .story-highlight { font-size: 1.05rem !important; }
 
-  .process { padding: 72px 0; }
+  /* ── Difference ── */
+  .difference { padding: 56px 0; }
+  .difference-grid { grid-template-columns: 1fr; gap: 14px; }
+  .difference-card { padding: 24px 20px; }
+  .difference-num { font-size: 1.3rem; margin-bottom: 10px; }
+  .difference-card h3 { font-size: 1rem; }
+  .difference-card p { font-size: 0.85rem; }
+
+  /* ── Process ── */
+  .process { padding: 56px 0; }
   .process-steps { grid-template-columns: 1fr; max-width: 240px; justify-items: center; }
-  .process-step { aspect-ratio: auto; width: 100%; }
+  .process-step { aspect-ratio: auto; width: 100%; padding: 22px 14px; }
+  .process-step h3 { font-size: 1.05rem; }
+  .process-step p { font-size: 0.9rem; }
   .process-connector { width: 1px; height: 24px; margin: -1px auto; }
   .process-connector::after {
     right: auto; top: auto;
     bottom: -3px; left: -3px;
     transform: rotate(135deg);
   }
+  .process-note { font-size: 0.88rem; }
 
-  .services { padding: 72px 0; }
+  /* ── Services ── */
+  .services { padding: 56px 0; }
   .service-grid { grid-template-columns: 1fr; }
-  .section-title { font-size: 1.45rem; }
+  .section-title { font-size: 1.35rem; }
+  .section-desc { font-size: 0.92rem; }
+  .service-card { padding: 20px; }
+  .service-info h3 { font-size: 0.9rem; }
+  .service-info p { font-size: 0.78rem; }
+  .service-price { font-size: 0.95rem; }
 
-  .ba { padding: 72px 0; }
-  .ba-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  /* ── Before & After ── */
+  .ba { padding: 56px 0; }
+  .ba-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .ba-header { margin-bottom: 32px; }
+  .ba-card-header { padding: 12px 14px; gap: 8px; }
+  .ba-num { font-size: 0.82rem; }
+  .ba-label { font-size: 0.8rem; }
+  .ba-tag { font-size: 0.56rem; padding: 3px 8px; }
 
-  .reviews { padding: 72px 0; }
-  .review-card { flex: 0 0 100%; }
-  .faq { padding: 72px 0; }
-  .faq-item { padding: 20px 24px; }
+  /* ── Reviews ── */
+  .reviews { padding: 56px 0; }
+  .review-card { flex: 0 0 100%; padding: 20px; }
+  .review-nickname { font-size: 0.82rem; }
+  .review-text { font-size: 0.82rem; line-height: 1.8; }
+  .review-tag { font-size: 0.65rem; padding: 3px 8px; }
 
-  .location { min-height: auto; padding: 72px 0 40px; }
-  .location-content { grid-template-columns: 1fr; }
-  .location-map { min-height: 240px; }
-  .location-map iframe { min-height: 240px; }
-  .final-cta-page { min-height: auto; padding: 72px 0; }
-  .final-cta-inner h2 { font-size: 1.35rem; }
+  /* ── FAQ ── */
+  .faq { padding: 56px 0; }
+  .faq-item { padding: 20px 22px; }
+  .faq-q { font-size: 0.92rem; }
+  .faq-a { font-size: 0.85rem; }
 
+  /* ── Location ── */
+  .location { min-height: auto; padding: 56px 0 40px; }
+  .location-content { grid-template-columns: 1fr; gap: 24px; }
+  .location-map { min-height: 220px; }
+  .location-map iframe { min-height: 220px; }
+  .location-item-icon { width: 40px; height: 40px; font-size: 1rem; }
+  .location-item-text h4 { font-size: 0.78rem; }
+  .location-item-text p { font-size: 0.88rem; }
+
+  /* ── Final CTA ── */
+  .final-cta-page { min-height: auto; padding: 56px 0; }
+  .final-cta-inner h2 { font-size: 1.35rem; line-height: 1.5; }
+  .final-cta-inner p { font-size: 1.1rem; margin-bottom: 32px; }
+
+  /* ── Buttons ── */
+  .btn { padding: 14px 24px; font-size: 0.88rem; min-height: 48px; }
+  .btn-outline { padding: 12px 20px; font-size: 0.85rem; }
+
+  /* ── Floating & Mobile CTA ── */
   .floating-sns { bottom: 80px; right: 12px; }
-  .floating-sns-btn { width: 42px; height: 42px; }
+  .floating-sns-btn { width: 44px; height: 44px; }
 
   .mobile-cta { display: block; }
   body { padding-bottom: 80px; }
   .footer { padding-bottom: 100px; }
+  .footer p { font-size: 0.72rem; }
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 1.65rem; }
-  .hero-sub { font-size: 0.95rem; }
-  .btn { padding: 14px 24px; font-size: 0.88rem; }
-  .service-card { padding: 20px; }
-  .review-card { padding: 24px; }
+  .container { padding: 0 16px; }
+
+  /* ── Hero ── */
+  .hero { padding: 88px 0 48px; }
+  .hero-inner { gap: 24px; }
+  .hero h1 { font-size: 1.55rem; letter-spacing: -0.02em; }
+  .hero-pain { font-size: 0.85rem; }
+  .hero-empathy { font-size: 0.95rem; }
+  .hero-conclusion { font-size: 1rem; }
+  .hero-visual { max-width: 260px; }
+  .hero-visual-card { padding: 16px; }
+  .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
+  .hero-cta .btn { width: 100%; max-width: 280px; }
+
+  /* ── Reasons ── */
+  .reasons { padding: 48px 0; }
+  .reasons-title { font-size: 1.2rem; flex-direction: column; gap: 6px; }
+  .reasons-emoji { font-size: 2rem; }
+  .reason-card { padding: 16px 18px; }
+  .reason-text { font-size: 0.82rem; }
+
+  /* ── Story ── */
+  .story { padding: 48px 0; }
+  .story-title { font-size: 1.2rem; margin-bottom: 24px; }
+  .story-body { padding: 24px 20px; }
+  .story-body p { font-size: 0.92rem; margin-bottom: 16px; }
+
+  /* ── Difference ── */
+  .difference { padding: 48px 0; }
+  .difference-card { padding: 20px 18px; }
+
+  /* ── Process ── */
+  .process { padding: 48px 0; }
+  .process-step { padding: 20px 12px; }
+
+  /* ── Services ── */
+  .services { padding: 48px 0; }
+  .service-card { padding: 18px 16px; }
+
+  /* ── Before & After ── */
+  .ba { padding: 48px 0; }
+  .ba-grid { max-width: 340px; gap: 16px; }
+  .ba-card-header { padding: 10px 12px; }
+  .ba-num { font-size: 0.78rem; }
+  .ba-label { font-size: 0.75rem; }
+
+  /* ── Reviews ── */
+  .reviews { padding: 48px 0; }
+  .review-card { padding: 18px; }
+
+  /* ── FAQ ── */
+  .faq { padding: 48px 0; }
+  .faq-item { padding: 18px 20px; }
+  .faq-q { font-size: 0.88rem; }
+  .faq-a { font-size: 0.82rem; }
+
+  /* ── Location ── */
+  .location { padding: 48px 0 32px; }
+  .location-map { min-height: 200px; }
+  .location-map iframe { min-height: 200px; }
+  .location-item { gap: 12px; }
+  .location-item-icon { width: 36px; height: 36px; font-size: 0.9rem; border-radius: 10px; }
+  .location-item-text p { font-size: 0.85rem; }
+  .location-item-text p small { font-size: 0.78rem; }
+
+  /* ── Final CTA ── */
+  .final-cta-page { padding: 48px 0; }
+  .final-cta-inner h2 { font-size: 1.2rem; }
+  .final-cta-inner p { font-size: 1rem; }
+  .final-cta-buttons { flex-direction: column; align-items: center; }
+  .final-cta-buttons .btn { width: 100%; max-width: 280px; }
+
+  /* ── Section common ── */
+  .section-label { font-size: 0.7rem; margin-bottom: 8px; }
+  .section-title { font-size: 1.25rem; margin-bottom: 12px; }
+  .section-desc { font-size: 0.85rem; }
+
+  /* ── BA title ── */
+  .ba-title { margin-bottom: 10px; }
+  .ba-header { margin-bottom: 24px; }
+
+  /* ── Footer ── */
+  .footer { padding: 24px 0; padding-bottom: 90px; }
+}
+
+/* ===========================
+   EXTRA SMALL (360px 이하)
+=========================== */
+@media (max-width: 360px) {
+  .container { padding: 0 14px; }
+
+  .hero h1 { font-size: 1.35rem; }
+  .hero-pain { font-size: 0.82rem; }
+  .hero-visual { max-width: 220px; }
+  .hero-visual-card { padding: 14px; }
+  .hero-badge { font-size: 0.7rem; padding: 4px 12px; }
+
+  .reasons-title { font-size: 1.1rem; }
+  .story-title { font-size: 1.1rem; }
+  .story-body { padding: 20px 16px; }
+  .story-body p { font-size: 0.88rem; }
+
+  .section-title { font-size: 1.15rem; }
+  .difference-card { padding: 18px 16px; }
+  .difference-num { font-size: 1.15rem; }
+
+  .ba-grid { max-width: 300px; }
+  .ba-card-header { padding: 8px 10px; }
+  .ba-num { font-size: 0.72rem; }
+  .ba-label { font-size: 0.7rem; }
+
+  .faq-q { font-size: 0.82rem; }
+  .faq-a { font-size: 0.78rem; }
+
+  .review-text { font-size: 0.78rem; }
+  .review-tag { font-size: 0.6rem; }
+
+  .final-cta-inner h2 { font-size: 1.1rem; }
+  .btn { font-size: 0.82rem; padding: 12px 20px; }
 }

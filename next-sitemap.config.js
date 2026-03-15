@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://example.com", // ← 배포 후 실제 도메인으로 교체
+  siteUrl: "https://bami-beauty.vercel.app",
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: "weekly",

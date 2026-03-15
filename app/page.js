@@ -331,6 +331,7 @@ export default function Home() {
             </h2>
             <p className="section-desc mx-auto">
               리프팅, 윤곽, 트러블, 바디 순환까지
+              <br className="mobile-br" />
               바미의 대표 프로그램을 소개합니다.
             </p>
           </div>
