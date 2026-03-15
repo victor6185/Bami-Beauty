@@ -93,8 +93,7 @@ export const metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   category: "beauty",
-  // 구글 서치콘솔 인증 시 아래 주석 해제 후 코드 입력
-  // verification: { google: "구글서치콘솔코드" },
+  verification: { google: "googlece21b40fad08e89f" },
 };
 
 export default function RootLayout({ children }) {
