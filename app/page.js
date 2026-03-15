@@ -24,8 +24,8 @@ const beforeAfterCases = [
   { num: "01", label: "회춘윤곽 관리 후 주름개선 임상", img: "/ba-01.jpg", tagPos: "side" },
   { num: "02", label: "회춘윤곽 관리 후 주름개선 임상", img: "/ba-02.jpg", tagPos: "diagonal" },
   { num: "03", label: "회춘윤곽 관리 후 주름개선 임상", img: "/ba-03.jpg", tagPos: "side" },
-  { num: "04", label: "중안부 볼륨 임상", img: "/ba-04.jpg", tagPos: "diagonal", flipped: true },
-  { num: "05", label: "중안부 볼륨 임상", img: "/ba-05.jpg", tagPos: "diagonal", flipped: true },
+  { num: "04", label: "중안부 볼륨 임상", img: "/ba-04.jpg", tagPos: "diagonal", flipImg: true },
+  { num: "05", label: "중안부 볼륨 임상", img: "/ba-05.jpg", tagPos: "diagonal" },
   { num: "06", label: "등 관리 임상", img: "/ba-06.jpg", tagPos: "side" },
   { num: "07", label: "여드름 케어 임상", img: "/ba-07.jpg", tagPos: "diagonal" },
   { num: "08", label: "여드름 케어 임상", img: "/ba-08.jpg", tagPos: "diagonal" },
@@ -403,7 +403,7 @@ export default function Home() {
                   <span className="ba-label">{item.label}</span>
                 </div>
                 <div className="ba-img-wrap">
-                  <Image src={item.img} alt={`${item.label} - Before & After`} fill style={{ objectFit: "cover" }} />
+                  <Image src={item.img} alt={`${item.label} - Before & After`} fill style={{ objectFit: "cover", ...(item.flipImg && { transform: "scaleY(-1)" }) }} />
                   <span className="ba-tag ba-tag-b" style={item.flipped ? { left: 10, bottom: 10 } : { left: 10, top: 10 }}>
                     BEFORE
                   </span>
