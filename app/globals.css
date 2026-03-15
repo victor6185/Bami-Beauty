@@ -436,7 +436,7 @@ ul, ol { list-style: none; }
 }
 
 .reasons-emoji {
-  font-size: 1rem;
+  font-size: 2rem;
   flex-shrink: 0;
 }
 
