@@ -93,7 +93,7 @@ export const metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   category: "beauty",
-  verification: { google: "googlece21b40fad08e89f" },
+  verification: { google: "googlece21b40fad08e89f", other: { "naver-site-verification": "2edfc17affa880dde1cbfbeabfa70b1a" } },
 };
 
 export default function RootLayout({ children }) {
