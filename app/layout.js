@@ -100,6 +100,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <head>
+        <meta name="naver-site-verification" content="naver2edfc17affa880dde1cbfbeabfa70b1a" />
+        <meta name="google-site-verification" content="googlece21b40fad08e89f" />
         <link
           rel="stylesheet"
           as="style"
